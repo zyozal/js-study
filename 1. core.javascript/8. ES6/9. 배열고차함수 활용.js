@@ -105,9 +105,3 @@ appleBasket
     .filter(user => user.address === '서울')
     .map(user => ({name: user.userName, second: user.hobbys[1]}))
     .forEach(result => console.log(`${result.name}님의 2번째 취미는 ${result.second}입니다.`)) 
-
-    const user =
-traders
-.filter(traders => traders.year === 2022)
-
-console.log(user);
