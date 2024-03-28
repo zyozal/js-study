@@ -53,9 +53,18 @@ const traders = [
 
 // 1. **2023년에 대전에서 발생한 모든 거래의 총액을 계산해주세요.**
 
+let totalInDaejeon2023 = 0;
+for (const trs of traders) {
+  if (trs.year === 2023 && trs.trader.city === '대전') {
+    totalInDaejeon2023 += trs.value;
+  }
+}
+console.log(`2023년 대전 총 거래액: ${totalInDaejeon2023}`);
+
+
 let userDaejeonTotal = 0; // 변수여서 let 사용
 const userDaejeon = traders
-.filter(user => user.trader.city === '대전')
+.filter(user => user.year === 2023 && user.trader.city === '대전')
 .map(user => user.value)
 .forEach(user => userDaejeonTotal += user)
 console.log(userDaejeonTotal);
@@ -64,14 +73,27 @@ console.log(userDaejeonTotal);
 
 // 2. **부산에서 거래한 모든 거래자의 이름을 배열에 담아 출력해주세요.**
 
+const nameListInBusan = [];
+for (const trs of traders) {
+  if (trs.trader.city === '부산') {
+    nameListInBusan.push(trs.trader.name);
+  }
+}
+console.log('부산 거래자 이름리스트: ', nameListInBusan);
+
+
 const userBusan = traders
 .filter(user => user.trader.city === '부산')
-.map(user => ({name: user.trader.name, city: user.trader.city}));
+.map(user => user.trader.name);
 console.log(userBusan);
 
 
 
 // 3. **모든 거래 중 가장 높은 거래액을 가진 거래의 거래자 정보(이름, 도시)와 거래액을 출력해주세요.**
+const highestTransaction = traders.reduce((max, trs) => max.value < trs.value ? trs : max);
+
+console.log(`가장 높은 거래액 정보 - 이름: ${highestTransaction.trader.name}, 도시: ${highestTransaction.trader.city}, 거래액: ${highestTransaction.value}`);
+
 
 // 가장 높은 거래액을 저장할 변수 초기화
 let maxTradeValue = 0;
@@ -102,10 +124,44 @@ console.log(`가장 높은 거래액을 가진 거래자: ${maxTrade.trader.name
 
 
 // 4. **각 도시별로 발생한 총 거래액을 객체 형태로 매핑해주세요. 예를 들어, `{서울: 총거래액, 부산: 총거래액}`과 같은 형태입니다.**
-let cityTotalValue = 0
-const cityValue = traders
-.map(user => `{${user.trader.city}: ${user.value}}`);
-console.log(cityValue);
+const totalCityValue = {};
+
+traders
+.filter(user => user.trader.city)
+.map(user => user.value && user.trader.city)
+console.log(totalCityValue);
+
+
+const totalByCity = {};  // { 서울: 500000, 대전: 30032030, ... }
+
+for (const trs of traders) {
+  const city = trs.trader.city;
+  if (totalByCity[city]) { // 이 도시는 한번 누적된 적이 있음
+    totalByCity[city] += trs.value;
+  } else {  // 이 도시는 한번도 나온적이 없던 도시임
+    totalByCity[city] = trs.value;
+  }
+}
+console.log(totalByCity);
+
+
+
+
+// 도시별 총 거래액을 저장할 객체 초기화
+let cityTotalSales = {};
+
+// traders 배열을 순회하면서 각 도시별 총 거래액 계산
+traders.forEach(trade => {
+  const city = trade.trader.city;
+  const sales = trade.value;
+
+  // 이미 해당 도시의 총 거래액이 계산되어 있다면 더하고, 없으면 새로운 키와 값을 추가
+  cityTotalSales[city] = (cityTotalSales[city] || 0) + sales;
+});
+
+// 결과 출력
+console.log(cityTotalSales);
+
 
 // 5. **거래액이 700000원 이상인 거래를 모두 찾아, 해당 거래의 연도별로 분류해주세요. 결과는 `{2022: [...거래정보], 2023: [...거래정보]}`와 같은 형태가 되어야 합니다.**
 
