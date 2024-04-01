@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .disappear {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <button id="hider">텍스트 숨기기!!</button>
+
+    <div class="text">안녕하세요~~</div>
+
+    <!-- 버튼을 클릭하면 div태그가 숨겨지도록 
+   이벤트 핸들러를 구현하세요.
+ 힌트) css의 display: none; 사용 -->
+
+ <script>
+  const $open = document.querySelector('#hider');
+ const $text = document.querySelector('.text');
+
+$open.addEventListener('click', () => {
+  $text.style.display = 'none';
+  $open.textContent = '텍스트 보이기!!';
+});
+
+$open.addEventListener('click', () => {
+      const CLASS_NAME = 'disappear';
+      if ($text.classList.contains(CLASS_NAME)) {
+        $text.classList.remove(CLASS_NAME)
+        $open.textContent = '텍스트 숨기기!';
+      } else {
+        $text.classList.add(CLASS_NAME);
+        $open.textContent = '텍스트 보이기!';
+      }
+    });
+
+ </script>
+</body>
+</html>
