@@ -41,24 +41,14 @@
 </div>
 
 <script>
-    const $open = document.querySelector('.menu');
- const $text = document.querySelector('.menu ul');
-
-
-$open.addEventListener('click', () => {
-  $text.style.display = 'contents';
-  $open.classList.add('open');
-});
-
+    
 const $lunches = document.getElementById('lunches');
 const $title = $lunches.querySelector('.title');
 
-        $title.addEventListener('click', function () {
-            //toggle: 해당클래스가 없으면 추가, 있으면 제거
-            $lunches.classList.toggle('open');
-        });        
-
-
+$title.addEventListener('click', function () {
+//toggle: 해당클래스가 없으면 추가, 있으면 제거
+$lunches.classList.toggle('open');
+});        
 
 </script>
 </body>
