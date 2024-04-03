@@ -120,17 +120,17 @@ section.main .number-wrapper h2 em {
 }
 
 .result div.selected {
-  animation: jumping 0.3s infinite linear alternate;
+  animation: jumping 0.5s infinite linear alternate;
 }
 @keyframes jumping {
   0% {
-      transform: translateY(0);
+      transform: translateY(0) scale(1.5);
   }
   50% {
-      transform: translateY(-10px);
+      transform: translateY(-5px) ;
   }
   100% {
-      transform: translateY(-20px);
+      transform: translateY(-10px);
   }
 }
 
