@@ -10,7 +10,7 @@ while (true){
     alert(a-b);
   }else if(result === "*"){
     alert(a*b);
-  }else if(result === "/"){
+  }else if(result === "/"){-
     alert(a/b);
   }
 }
