@@ -15,6 +15,7 @@
     }
 
     #slider {
+      float: left;
       display: flex;
       align-items: center;
       background-color: white;
@@ -24,6 +25,7 @@
     }
 
     #slider img {
+   
       max-width: 400px;
       max-height: 300px;
       display: block;
@@ -31,6 +33,7 @@
     }
 
     button {
+      flex-direction: column;
       background-color: #007bff;
       color: white;
       border: none;
@@ -51,9 +54,9 @@
 </head>
 <body>
   <div id="slider">
-    <button id="prev">이전</button>
+    <button class="prev">이전</button>
     <img id="image" src="https://blog.kakaocdn.net/dn/dN4uhe/btr8xWDwbrK/5YjBrelhtJwU2BAcLtEVoK/img.jpg" style="width: 400px; height: auto;">
-    <button id="next">다음</button>
+    <button class="next">다음</button>
   </div>
 
   <script>
