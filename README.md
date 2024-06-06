@@ -1,4 +1,3 @@
-
 ### ajax 실습 웹사이트
 - https://jsonplaceholder.typicode.com/
 
